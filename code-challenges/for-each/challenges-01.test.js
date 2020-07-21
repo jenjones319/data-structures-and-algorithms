@@ -11,7 +11,7 @@ const greeting = (message) => {
 };
 
 const speaker = (message, callback) => {
-    return callback (message);
+  return callback(message);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -27,12 +27,12 @@ Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr, value) => {
-    arr.push(value);
+  arr.push(value);
 };
 
 const addNumbers = (num, arr, times, callback) => {
-  for (let i = 0; i < times; i++){
-     callback(arr, num); 
+  for (let i = 0; i < times; i++) {
+    callback(arr, num);
   }
   return arr;
 }; 
@@ -52,7 +52,13 @@ This function should use forEach to populate your grocery list based on the stor
 ------------------------------------------------------------------------------------------------ */
 
 const createList = (availableItems) => {
-  // Solution code here...
+  let list = [];
+  availableItems.forEach(function (item) {
+    if (item.available === true) {
+      list.push(item.name);
+    };
+  });
+  return list;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -67,8 +73,24 @@ Return the resulting output array.
 ------------------------------------------------------------------------------------------------ */
 
 const fizzbuzz = (arr) => {
-  // Solution code here...
+  let output = [];
+  arr.forEach(function (number) {
+    if (number % 3 === 0 && number % 5 !== 0) {
+      output.push('Fizz');
+    }
+    else if (number % 5 === 0 && number % 3 !== 0) {
+      output.push('Buzz');
+    }
+    else if (number % 3 === 0 && number % 5 === 0) {
+      output.push('Fizz Buzz');
+    }
+    else {
+      output.push(number);
+    }
+  });
+  return output;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
