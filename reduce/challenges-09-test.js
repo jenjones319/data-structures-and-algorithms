@@ -14,7 +14,6 @@ Then, write an `/events` route with a callback function called getCurrentEvents.
 Next, write a function named getCurrentEvents that takes in the request and response as parameters. This function should call the mapCurrentEvents function and send the result to the front-end.
 ------------------------------------------------------------------------------------------------ */
 
-
 // Express sever here
 const createServer = () => {
 const express = require('express');
@@ -36,7 +35,7 @@ function notFoundHandler(request, response) {
 function errorHandler(error, request, response) {
     response.status(500).json({ error: true, message: error.message });
 }
-var server = app.listen(5500, function () {
+var server = app.listen(3301, function () {
     var port = server.address().port;
     console.log('Example app listening at port', port);
 });
@@ -166,13 +165,14 @@ news: [
 ]
 }
 function getCurrentEvents(request, response) {
-response.status(200).send('connected');
+  response.status(200).send('connected');
 }
+
 const mapCurrentEvents = () => {
-return currentEvents.news.map(event => {
-    return new Event(event);
-})
+  const arr = currentEvents.news.map(newsArticle => new Event(newsArticle));
+  return arr;
 }
+
 function Event(obj) {
 this.author = obj.author
 this.categories = obj.category
